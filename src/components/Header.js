@@ -8,6 +8,11 @@ const HeaderBlock = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media(max-width: 663px) {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
 `;
 
 const Title = styled.h1`
