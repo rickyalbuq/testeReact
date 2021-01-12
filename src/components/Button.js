@@ -20,10 +20,6 @@ const Button = ({ pad, fSize, lHeight, fill, color, children }) => {
         lineHeight: lHeight,
         background: fill,
         color: color,
-        '&:hover': {
-          color: fill,
-          background: color,
-        },
       }}
       onMouseOver={({ target }) => {
         target.style.color = fill;

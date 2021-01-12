@@ -1,3 +1,5 @@
+
+
 const Data = [
   {
     header: 'Vaga de Voluntariado',
@@ -11,12 +13,7 @@ const Data = [
   {
     header: 'Doação de materiais',
     title: 'Arrecadação de alimentos para moradores de rua',
-    vehicle: 'SP Invisível',
-    value: '36',
-    text: ['ítens', 'disponíveis'],
-    button: 'Doar',
-    city: 'Natal, RN',
-  },
+    vehicle: 'SP Invisívedefault
   {
     header: 'Campanha de arrecadação',
     title: 'Arrecadação de alimentos para moradores de rua',

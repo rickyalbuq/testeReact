@@ -5,6 +5,7 @@ import Header from './Header';
 import Body from './Body';
 import Info from './Info';
 import Footer from './Footer';
+import { Icon0, Icon1 } from '../Icons';
 
 const CardBlock = styled.div`
   width: 20rem;
@@ -19,7 +20,7 @@ const CardBlock = styled.div`
 `;
 
 const Card = ({
-  header,
+  level,
   title,
   vehicle,
   value,
@@ -30,12 +31,21 @@ const Card = ({
 }) => {
   return (
     <CardBlock>
-      <Header>{header}</Header>
+      <Header>
+        {level == 'subscribe' ? 'Vaga de Voluntariado' : 'Doação de materiais'}
+      </Header>
       <Body title={title} vehicle={vehicle}>
-        {children}
-        <Info value={value} text={text} button={button} />
+        {level == 'subscribe' ? <Icon0 /> : <Icon1 />}
+        <Info
+          value={value}
+          text={
+            level == 'subscribe' ? ['Horas', 'Semana'] : ['Valor', 'Esperado']
+          }
+          button={button}
+          level={level}
+        />
       </Body>
-      <Footer className="">{city}</Footer>
+      <Footer>{city}</Footer>
     </CardBlock>
   );
 };

@@ -1,9 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
-import Vaga from './Cards/Vaga';
-import Doacao from './Cards/Doacao';
-import Campanha from './Cards/Campanha';
+import Card from './Cards/Card';
 
 const CardGrid = styled.div`
   width: 100%;
@@ -13,17 +10,51 @@ const CardGrid = styled.div`
 `;
 
 const Grid = () => {
+  const [dados, setDados] = React.useState(null);
+  const [loading, setLoading] = React.useState(null);
+
+  React.useEffect(() => {
+    setLoading(true);
+    (async () => {
+      const response = await fetch(
+        'https://h5kgh2h6sh.execute-api.sa-east-1.amazonaws.com/Prod/opportunities/',
+      );
+      const { data } = await response.json();
+
+      setDados(
+        data.map(({ level, project_data, subscribe_data, material_data }) => ({
+          level: level,
+          title: (subscribe_data || material_data).title,
+          vehicle: project_data.name,
+          value: (subscribe_data || material_data).position.available,
+          city: `${(subscribe_data || material_data).address.city}, ${
+            (subscribe_data || material_data).address.state
+          }`,
+        })),
+      );
+      setLoading(false);
+    })();
+  }, []);
+
+  console.log(dados);
+
   return (
     <CardGrid>
-      <Vaga />
-      <Doacao />
-      <Doacao />
-      <Doacao />
-      <Vaga />
-      <Campanha />
-      <Doacao />
-      <Vaga />
-      <Doacao />
+      {loading || !dados ? (
+        <p>Carregando</p>
+      ) : (
+        dados.map(({ level, title, vehicle, value, city }) => {
+          return (
+            <Card
+              level={level}
+              title={title}
+              vehicle={vehicle}
+              value={value}
+              city={city}
+            />
+          );
+        })
+      )}
     </CardGrid>
   );
 };

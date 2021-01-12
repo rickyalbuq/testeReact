@@ -29,7 +29,7 @@ const Text = styled.p`
   text-transform: uppercase;
 `;
 
-const Info = ({ value, text, button }) => {
+const Info = ({ level, value, text, button }) => {
   return (
     <InfoBlock>
       <TextBlock>
@@ -46,7 +46,7 @@ const Info = ({ value, text, button }) => {
         color={'#ffffff'}
         href="/"
       >
-        {button}
+        {level == 'subscribe' ? 'Participar' : 'Doar'}
       </Button>
     </InfoBlock>
   );
