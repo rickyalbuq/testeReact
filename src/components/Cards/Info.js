@@ -46,7 +46,7 @@ const Info = ({ level, value, text, button }) => {
         color={'#ffffff'}
         href="/"
       >
-        {level == 'subscribe' ? 'Participar' : 'Doar'}
+        {level === 'subscribe' ? 'Participar' : 'Doar'}
       </Button>
     </InfoBlock>
   );
