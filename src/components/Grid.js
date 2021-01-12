@@ -23,6 +23,7 @@ const Grid = () => {
 
       setDados(
         data.map(({ level, project_data, subscribe_data, material_data }) => ({
+          key: project_data.slug,
           level: level,
           title: (subscribe_data || material_data).title,
           vehicle: project_data.name,
@@ -36,16 +37,14 @@ const Grid = () => {
     })();
   }, []);
 
-  console.log(dados);
-
   return (
     <CardGrid>
       {loading || !dados ? (
         <p>Carregando</p>
       ) : (
-        dados.map(({ level, title, vehicle, value, city }) => {
+        dados.map(({ key, level, title, vehicle, value, city }) => {
           return (
-            <Card
+            <Card key={Math.random()}
               level={level}
               title={title}
               vehicle={vehicle}
