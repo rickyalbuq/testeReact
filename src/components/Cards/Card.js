@@ -32,14 +32,14 @@ const Card = ({
   return (
     <CardBlock>
       <Header>
-        {level == 'subscribe' ? 'Vaga de Voluntariado' : 'Doação de materiais'}
+        {level === 'subscribe' ? 'Vaga de Voluntariado' : 'Doação de materiais'}
       </Header>
       <Body title={title} vehicle={vehicle}>
-        {level == 'subscribe' ? <Icon0 /> : <Icon1 />}
+        {level === 'subscribe' ? <Icon0 /> : <Icon1 />}
         <Info
           value={value}
           text={
-            level == 'subscribe' ? ['Horas', 'Semana'] : ['Valor', 'Esperado']
+            level === 'subscribe' ? ['Horas', 'Semana'] : ['Valor', 'Esperado']
           }
           button={button}
           level={level}
